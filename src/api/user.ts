@@ -3,9 +3,9 @@ import api from "./index";
 // ユーザAPIのエンドポイントを定義
 const endpoints = {
     // ユーザ情報を取得
-    getUser: async () => {
-        return await api('user')
-    },
+    getUsers: async () => {
+        return await api('users')
+    }
 };
 
 export default endpoints;

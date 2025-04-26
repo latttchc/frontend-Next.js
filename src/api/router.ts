@@ -1,7 +1,7 @@
 // 各ドメインごとのAPIエンドポイントを統合するオブジェクト
 // ここではユーザー関連のエンドポイント（userEndpoints）を users にまとめている
 
-import userEndpoints from './user';
+import userEndpoints from '@/api/user';
 
 const endpoints = {
     users: userEndpoints, // ユーザーAPIエンドポイント群（/user 系）
