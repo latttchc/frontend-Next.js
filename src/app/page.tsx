@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
 
+
 export default function Home() {
   const { data } = useQuery({
     queryKey: ['getUsers'],
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col gap-[32px] justify-between items-center p-24">
       <ul>
-        {data?.map((user: { id: string; name: string; email: string }) => (
+        {data?.map((user) => (
           <li key={user.id}>
             {user.name} - {user.email}
           </li>
