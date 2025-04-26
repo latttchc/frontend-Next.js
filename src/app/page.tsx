@@ -12,7 +12,13 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col gap-[32px] justify-between items-center p-24">
-      Hello
+      <ul>
+        {data?.map((user: { id: string; name: string; email: string }) => (
+          <li key={user.id}>
+            {user.name} - {user.email}
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
