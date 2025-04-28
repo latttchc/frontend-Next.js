@@ -35,6 +35,10 @@ export default function Home() {
           </li>
         ))}
       </ul>
+
+      <NextLink className="bg-yellow-500 text-white rounded-md p-2 mt-4" href="/users/new">
+        New User
+      </NextLink>
     </main >
   );
 }
