@@ -2,6 +2,9 @@ import api from "./index";
 
 type Endpoints = {
     getUsers: () => Promise<APISchema.User[]>
+    createUser: (user: Partial<APISchema.User>) => Promise<APISchema.User>
+    updateUser: (user: Partial<APISchema.User>) => Promise<APISchema.User>
+    deleteUser: (user: Partial<APISchema.User>) => Promise<void>
 }
 
 // ユーザAPIのエンドポイントを定義
@@ -9,7 +12,28 @@ const endpoints: Endpoints = {
     // ユーザ情報を取得
     getUsers: async () => {
         return await api('users')
-    }
+    },
+    createUser: async (user: Partial<APISchema.User>) => {
+        return await api('users', {
+            method: 'post',
+            data: JSON.stringify({
+                user,
+            }),
+        })
+    },
+    updateUser: async (user: Partial<APISchema.User>) => {
+        return await api(`users/${user.id}`, {
+            method: 'put',
+            data: JSON.stringify({
+                user,
+            }),
+        })
+    },
+    deleteUser: async (user: Partial<APISchema.User>) => {
+        return await api(`users/${user.id}`, {
+            method: 'delete',
+        })
+    },
 };
 
 export default endpoints;
