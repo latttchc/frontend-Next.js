@@ -26,6 +26,7 @@ export const api = async (url: string, options: ApiOptions = {}) => {
             params,
             headers: {
                 Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
             },
             responseType: "json",
         });
