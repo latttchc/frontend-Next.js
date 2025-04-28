@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
 
@@ -8,13 +9,16 @@ const defaultState = {
     email: '',
 }
 
-export default function EditUser(props: any) {
-    const { params: { userId } } = props
+export default function EditUser() {
+    const params = useParams<{ userId: any }>();
+    const userId = params.userId;
+
+    const router = useRouter();
 
     const [state, setState] = useState(defaultState);
     const { name, email } = state;
 
-    const { data, isLoading, refetch, status } = useQuery({
+    const { data, isLoading, status } = useQuery({
         queryKey: ['getUsers', userId],
         queryFn: () => apiRouter.users.getUser(userId),
     });
@@ -25,7 +29,7 @@ export default function EditUser(props: any) {
         mutationFn: apiRouter.users.updateUser,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['getUsers',] });
-            refetch();
+            router.push('/');
         },
     })
 
