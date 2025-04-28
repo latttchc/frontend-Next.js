@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
+import CancelButton from "@/components/CancelButton";
 
 const defaultState = {
     name: '',
@@ -79,6 +80,7 @@ export default function EditUser() {
                     </div>
                 </form>
             )}
+            <CancelButton />
         </main >
     );
 }

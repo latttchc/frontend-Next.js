@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
+import CancelButton from "@/components/CancelButton";
 
 const defaultState = {
     name: '',
@@ -58,6 +59,7 @@ export default function NewUser() {
                     </button>
                 </div>
             </form>
+            <CancelButton />
         </main >
     );
 }
