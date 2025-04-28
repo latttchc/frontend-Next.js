@@ -1,4 +1,5 @@
 'use client';
+import NextLink from "next/link";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import apiRouter from "@/api/router";
 
@@ -23,7 +24,9 @@ export default function Home() {
       <ul className="text-center w-96">
         {data?.map((user) => (
           <li className="flex border-b border-gray-800 py-4 justify-between gap-2" key={user.id}>
-            <span className="text-white text-bold">{user.name}</span>
+            <NextLink className="text-white text-bold" href={`/users/${user.id}`}>
+              {user.name}
+            </NextLink>
             <span className="">{user.email}</span>
             <button
               className=""
